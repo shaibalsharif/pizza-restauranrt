@@ -7,9 +7,9 @@ import Items from "../components/Pages/Items"
 import Order from "../components/Pages/Order"
 import Cart from "../components/Pages/Cart"
 import Payment from "../components/Pages/Payment"
-
-
-
+import More from "../components/Pages/More"
+import AdminPanel from '../components/Pages/AdminPanel'
+import Variations from '../components/Pages/Variations'
 
 
 const createRoute = (path, Element) => {
@@ -22,11 +22,13 @@ export const routes = [
     createRoute('/login', <Login />),
     createRoute('/register', <Register />),
     createRoute('/items', <Category />),
-
-    createRoute('/menu', <Items />),
+    createRoute('/more', <More />),
+    createRoute('/menu/:cat', <Items />),
+    createRoute('/:cat/:id',<Variations/>),
     createRoute('/order', <Order />),
     createRoute('/cart', <Cart />),
     createRoute('/payment', <Payment />),
+    createRoute('/admin',<AdminPanel/>)
 
 
 

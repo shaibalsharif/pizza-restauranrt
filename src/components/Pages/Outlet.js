@@ -6,14 +6,14 @@ import { useNavigate } from 'react-router-dom';
 
 const Outlet = ({ data }) => {
     const navigate = useNavigate()
-const handleOutletSelection = (e) => {
+    const handleOutletSelection = (e) => {
         navigate('/items')
     }
     return (
         <div className=' p-2 mb-2 text-center  w-[45%] bg-[#f2f2f2] rounded-lg shadow-md border-4 border-b-[#a1a0a0]'
-        onClick={handleOutletSelection}>
+            onClick={handleOutletSelection}>
             <img src={'./brg.png'} className=' h-20 rounded-xl shadow-sm mb-1' />
-            <p className='text-xs font-semibold'>Pizzaburg - {data.name}</p>
+            <p className='text-xs font-semibold'>{data.name}</p>
             <p className='px-2 text-xs truncate'>{data.address}</p>
             <div className='flex justify-between items-center'>
                 <div>

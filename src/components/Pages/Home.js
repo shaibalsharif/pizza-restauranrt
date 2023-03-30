@@ -1,4 +1,5 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
@@ -16,6 +17,17 @@ const Home = () => {
     navigate('/register')
   }
 
+
+  useEffect(() => {
+    axios.get('http://localhost:5555/api/menu')
+    .then(res=>{
+      console.log(res.data);
+    })
+    .catch(e=>{
+      console.log(e);
+    })
+  }, [])
+
   return (
     <div className="h-[100vh]  bg-[url('https://bbspizzaria.com/wp-content/uploads/2017/01/bg-pizza.jpg')] z-[-1]
      bg-no-repeat bg-cover  bg-center " >
@@ -23,7 +35,7 @@ const Home = () => {
         <div className='logo w-full flex justify-center items-center pt-24'>
           <img className='w-56 ' src='./logo.png ' />
         </div>
-       {/*  <div className='news'>
+        {/*  <div className='news'>
           <img className='w-36 h-24 ' src='./pizza.png' />
         </div> */}
 

@@ -1,36 +1,30 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import BottomNav from '../../shared/BottomNav'
 import SideBoard from '../../shared/SideBoard'
 import Outlet from './Outlet'
 
-const getRating = () => {
-  const x = ((Math.random() * 10) / 2)
-  let y = Math.floor(x)
-  if (y < 2) {
-    y += 2
-  }
-  return x - y > .4 ? y + .5 : y
-}
-const getOutlet = (locs) => {
 
-  const x = locs.map(el => {
-    return {
-      name: el,
-      address: `256,rd-2, hs-5, ave-7, ${el}`,
-      rating: getRating()
-    }
-  })
-  return x
-}
-const LOCATIONS = getOutlet(['Shyamoli', 'Khilgaon', 'Basundahra', 'Mirpur-2', 'Sony', 'DOHS', 'Mirpur-12'])
+
+
+
 
 const Outlets = () => {
+
+
   const [open, setOpen] = useState(false)
+  const base_url = process.env.REACT_APP_BASE_URL
+  const [outletData, setOutletData] = useState([])
 
 
-  const handleToggle = {
 
-  }
+
+  useEffect(() => {
+    axios.get(`${base_url}/api/outlets`)
+      .then(res => {
+        setOutletData(res.data);
+      })
+  }, [])
 
   return (
     <div className=''>
@@ -43,11 +37,12 @@ const Outlets = () => {
         </div>
         <p className='px-3 mt-4'>Outlets</p>
         <div className='outlet-div h-96  flex flex-wrap justify-around mt-2'>
-        {LOCATIONS.map(el=><Outlet data={el}/>)}
+          {outletData.length?  outletData.map(el => <Outlet data={el} />):
+          <>NO DATA</>}
         </div>
       </div>
       <div className='fixed bottom-0 w-[100vw]'>
-        <BottomNav />
+        <BottomNav content={'home'} />
       </div>
     </div>
   )

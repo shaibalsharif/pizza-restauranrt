@@ -2,6 +2,7 @@ import React from 'react'
 import { routes } from '../../utils/route_util'
 import { Routes, Route, } from "react-router"
 import NotFound from '../../shared/NotFound'
+import BottomNav from '../../shared/BottomNav'
 const Router = () => {
 
     const getRoutes = () => {
@@ -17,6 +18,7 @@ const Router = () => {
                 {getRoutes()}
                 <Route path="*" element={<NotFound />} />
             </Routes>
+            
         </div>
     )
 }

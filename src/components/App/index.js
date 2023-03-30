@@ -17,6 +17,7 @@ function App() {
         <div className='App '>
           <Router />
         </div>
+        
       </BrowserRouter>
     </AppContext.Provider>
   );

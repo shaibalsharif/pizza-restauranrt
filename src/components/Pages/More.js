@@ -1,13 +1,13 @@
 import React from 'react'
 import BottomNav from '../../shared/BottomNav'
-const Order = () => {
+const More = () => {
   return (
-    <div>Order
+    <div>More
       <div className='fixed bottom-0 w-[100vw]'>
-        <BottomNav content={'order'} />
+        <BottomNav content={'more'} />
       </div>
     </div>
   )
 }
 
-export default Order
+export default More
